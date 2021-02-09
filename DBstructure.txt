@@ -1,0 +1,17 @@
+VENDOR
+FirstName   string
+LastName    string
+Commission   double
+
+ITEM
+Title                  string
+Description            string
+Price                  decimal
+Sold                   boolean
+PaymentDistributed     boolean
+Owner                  Vendor
+
+STORE
+Name      string
+Vendors   Vendor
+Items     Item
