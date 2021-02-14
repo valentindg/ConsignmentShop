@@ -35,6 +35,8 @@
             this.shoppingCartListboxLabel = new System.Windows.Forms.Label();
             this.shoppingCartListbox = new System.Windows.Forms.ListBox();
             this.makePurchase = new System.Windows.Forms.Button();
+            this.vendorListLabel = new System.Windows.Forms.Label();
+            this.vendorListbox = new System.Windows.Forms.ListBox();
             this.SuspendLayout();
             // 
             // headerText
@@ -53,7 +55,7 @@
             this.itemsListBox.ItemHeight = 25;
             this.itemsListBox.Location = new System.Drawing.Point(20, 153);
             this.itemsListBox.Name = "itemsListBox";
-            this.itemsListBox.Size = new System.Drawing.Size(378, 254);
+            this.itemsListBox.Size = new System.Drawing.Size(317, 204);
             this.itemsListBox.TabIndex = 1;
             // 
             // ItemsListBoxLabel
@@ -68,12 +70,13 @@
             // 
             // addToCart
             // 
-            this.addToCart.Location = new System.Drawing.Point(430, 248);
+            this.addToCart.Location = new System.Drawing.Point(399, 231);
             this.addToCart.Name = "addToCart";
             this.addToCart.Size = new System.Drawing.Size(174, 46);
             this.addToCart.TabIndex = 3;
             this.addToCart.Text = "Add To Cart ->";
             this.addToCart.UseVisualStyleBackColor = true;
+            this.addToCart.Click += new System.EventHandler(this.addToCart_Click);
             // 
             // shoppingCartListboxLabel
             // 
@@ -91,23 +94,45 @@
             this.shoppingCartListbox.ItemHeight = 25;
             this.shoppingCartListbox.Location = new System.Drawing.Point(644, 153);
             this.shoppingCartListbox.Name = "shoppingCartListbox";
-            this.shoppingCartListbox.Size = new System.Drawing.Size(401, 254);
+            this.shoppingCartListbox.Size = new System.Drawing.Size(317, 204);
             this.shoppingCartListbox.TabIndex = 4;
             // 
             // makePurchase
             // 
-            this.makePurchase.Location = new System.Drawing.Point(913, 413);
+            this.makePurchase.Location = new System.Drawing.Point(829, 375);
             this.makePurchase.Name = "makePurchase";
             this.makePurchase.Size = new System.Drawing.Size(132, 40);
             this.makePurchase.TabIndex = 6;
             this.makePurchase.Text = "Purchase";
             this.makePurchase.UseVisualStyleBackColor = true;
+            this.makePurchase.Click += new System.EventHandler(this.makePurchase_Click);
+            // 
+            // vendorListLabel
+            // 
+            this.vendorListLabel.AutoSize = true;
+            this.vendorListLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.vendorListLabel.Location = new System.Drawing.Point(25, 405);
+            this.vendorListLabel.Name = "vendorListLabel";
+            this.vendorListLabel.Size = new System.Drawing.Size(93, 25);
+            this.vendorListLabel.TabIndex = 8;
+            this.vendorListLabel.Text = "Vendors";
+            // 
+            // vendorListbox
+            // 
+            this.vendorListbox.FormattingEnabled = true;
+            this.vendorListbox.ItemHeight = 25;
+            this.vendorListbox.Location = new System.Drawing.Point(25, 441);
+            this.vendorListbox.Name = "vendorListbox";
+            this.vendorListbox.Size = new System.Drawing.Size(317, 204);
+            this.vendorListbox.TabIndex = 7;
             // 
             // ConsignmentShop
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1056, 469);
+            this.ClientSize = new System.Drawing.Size(976, 709);
+            this.Controls.Add(this.vendorListLabel);
+            this.Controls.Add(this.vendorListbox);
             this.Controls.Add(this.makePurchase);
             this.Controls.Add(this.shoppingCartListboxLabel);
             this.Controls.Add(this.shoppingCartListbox);
@@ -116,7 +141,7 @@
             this.Controls.Add(this.itemsListBox);
             this.Controls.Add(this.headerText);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "ConsignmentShop";
             this.Text = "Consignment Shop";
             this.ResumeLayout(false);
@@ -133,6 +158,8 @@
         private System.Windows.Forms.Label shoppingCartListboxLabel;
         private System.Windows.Forms.ListBox shoppingCartListbox;
         private System.Windows.Forms.Button makePurchase;
+        private System.Windows.Forms.Label vendorListLabel;
+        private System.Windows.Forms.ListBox vendorListbox;
     }
 }
 
