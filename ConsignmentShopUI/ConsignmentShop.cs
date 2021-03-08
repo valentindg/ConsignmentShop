@@ -14,6 +14,7 @@ namespace ConsignmentShopUI
         BindingSource itemsBinding = new BindingSource();
         BindingSource cartBinding = new BindingSource();
         BindingSource vendorsBinding = new BindingSource();
+        private decimal storeProfit = 0;
 
         public ConsignmentShop()
         {
@@ -30,13 +31,13 @@ namespace ConsignmentShopUI
             shoppingCartListbox.DataSource = cartBinding;
 
             shoppingCartListbox.DisplayMember = "Display";
-            shoppingCartListbox.DisplayMember = "Display";
+            shoppingCartListbox.ValueMember = "Display";
 
             vendorsBinding.DataSource = store.Vendors;
             vendorListbox.DataSource = vendorsBinding;
 
-            vendorListbox.DisplayMember = "";
-            vendorListbox.ValueMember = "";
+            vendorListbox.DisplayMember = "Display";
+            vendorListbox.ValueMember = "Display";
         }
 
         private void SetupData()
@@ -78,11 +79,17 @@ namespace ConsignmentShopUI
 
         private void addToCart_Click(object sender, EventArgs e)
         {
+
+            test();
+        }
+        public void test() 
+        {
             Item selectedItem = (Item)itemsListBox.SelectedItem;
 
             shoppingCartData.Add(selectedItem);
 
             cartBinding.ResetBindings(false);
+
         }
 
         private void makePurchase_Click(object sender, EventArgs e)
@@ -90,14 +97,19 @@ namespace ConsignmentShopUI
             foreach (Item item in shoppingCartData)
             {
                 item.Sold = true;
+                item.Owner.PaymentDue += (decimal)item.Owner.Commission * item.Price;
+                storeProfit += (1 - (decimal)item.Owner.Commission) * item.Price;
             }
 
             shoppingCartData.Clear();
 
             itemsBinding.DataSource = store.Items.Where(x => x.Sold == false).ToList();
 
+            storeProfitValue.Text = string.Format("${0}", storeProfit);
+
             cartBinding.ResetBindings(false);
             itemsBinding.ResetBindings(false);
+            vendorsBinding.ResetBindings(false);
         }
     }
 }
